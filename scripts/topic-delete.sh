@@ -1,0 +1,1 @@
+$KAFKA_HOME/bin/kafka-topics --delete --zookeeper localhost:2181 --topic aditya-topic
