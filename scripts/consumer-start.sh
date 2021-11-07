@@ -1,1 +1,1 @@
-$KAFKA_HOME/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic aditya-topic --from-beginning
+$KAFKA_HOME/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic nse-eod-topic --from-beginning

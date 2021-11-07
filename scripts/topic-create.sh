@@ -1,1 +1,1 @@
-$KAFKA_HOME/bin/kafka-topics --create --zookeeper localhost:2181 --topic aditya-topic --partitions 5 --replication-factor 3 --config segment.bytes=1000000
+$KAFKA_HOME/bin/kafka-topics --create --zookeeper localhost:2181 --topic nse-eod-topic --partitions 5 --replication-factor 3 --config segment.bytes=1000000
