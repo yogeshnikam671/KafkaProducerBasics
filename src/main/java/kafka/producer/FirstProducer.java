@@ -25,8 +25,8 @@ public class FirstProducer {
 
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer, String>(props);
 
-        producer.send(new ProducerRecord<>(KafkaConfig.topicName, 0, "Hi Aditya!"));
-        producer.send(new ProducerRecord<>(KafkaConfig.topicName, 1, "I am Yogesh :)"));
+        producer.send(new ProducerRecord<>(KafkaConfig.topicName1, 0, "Hi Aditya!"));
+        producer.send(new ProducerRecord<>(KafkaConfig.topicName2, 1, "I am Yogesh :)"));
 
         producer.close();
     }

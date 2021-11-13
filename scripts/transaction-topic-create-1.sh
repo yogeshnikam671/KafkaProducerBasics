@@ -1,0 +1,1 @@
+$KAFKA_HOME/bin/kafka-topics --create --zookeeper localhost:2181 --topic transaction-topic-1 --partitions 5 --replication-factor 3 --config segment.bytes=1000000 min.insync.replicas=2
