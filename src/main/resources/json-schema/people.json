@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "javaType": "kafka.producer.types.People",
+  "properties": {
+    "name": {"type": "string"},
+    "age": {"type": "integer"},
+    "hobbies": {
+      "type": "array",
+      "items": {
+        "$ref": "hobby.json"
+      }
+    }
+  }
+}

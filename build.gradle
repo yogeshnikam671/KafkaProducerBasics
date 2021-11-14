@@ -1,6 +1,16 @@
 plugins {
     id 'java'
+    id "org.jsonschema2dataclass" version "3.0.0"
 }
+
+//jsonschema2Pojo {
+//    targetPackage = 'schema-to-POJO'
+//    source.setFrom files("${project.rootDir}/src/main/resources/json-schema")
+//}
+// uncommenting the above part and running compile java from gradle will create the pojos for
+// the schema defined in resources/json-schema
+// the thing is, this part is giving me errors and I am unable to figure out how that can be fixed.
+// that is why, commenting for now. please look into it later if possible.
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -13,6 +23,7 @@ dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
     implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '3.0.0'
+    implementation('com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4.1')
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'

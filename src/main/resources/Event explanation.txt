@@ -1,0 +1,9 @@
+The event people will look like following :
+{
+    "name": "Yogesh",
+    "age": 24,
+    "hobbies": [
+        { "hobbyName": "bodybuilding", "reason": "makes me strong" },
+        { "hobbyName": "time-pass with friends", "reason": "makes me happy" },
+    ]
+}
