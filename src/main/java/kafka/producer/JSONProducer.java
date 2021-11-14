@@ -8,6 +8,7 @@ import kafka.producer.types.People;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class JSONProducer {
     private static final Logger logger = LoggerFactory.getLogger(JSONProducer.class);
@@ -35,7 +38,15 @@ public class JSONProducer {
         logger.info("The People POJO object --> " + people.toString());
 
         ProducerRecord<Integer, People> message = new ProducerRecord<Integer, People>(jsonTopicName, 0, people);
-        producer.send(message);
+
+        Future<RecordMetadata> future = producer.send(message);
+        try {
+            RecordMetadata rm = future.get();
+            logger.info("The message was sent successfully for real!");
+        } catch (ExecutionException | InterruptedException e) {
+            logger.info("There was an error while sending the message :(");
+        }
+
         producer.close();
         logger.info("The message is sent successfully");
     }
