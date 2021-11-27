@@ -1,4 +1,4 @@
-package kafka.producer.types;
+package kafka.producer.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,6 +11,9 @@ public class People {
     private int age;
     @JsonProperty("hobbies")
     private Hobby[] hobbies;
+
+    public People() {
+    }
 
     public String getName() {
         return name;

@@ -1,1 +1,1 @@
-$KAFKA_HOME/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic json-topic --from-beginning
+$KAFKA_HOME/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic people-topic --from-beginning

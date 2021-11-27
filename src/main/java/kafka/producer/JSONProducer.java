@@ -4,7 +4,7 @@ package kafka.producer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kafka.producer.configuration.KafkaConfig;
 import kafka.producer.serializer.JSONSerializer;
-import kafka.producer.types.People;
+import kafka.producer.models.People;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -21,7 +21,7 @@ import java.util.concurrent.Future;
 
 public class JSONProducer {
     private static final Logger logger = LoggerFactory.getLogger(JSONProducer.class);
-    private static final String jsonTopicName = "json-topic";
+    private static final String peopleTopicName = "people-topic";
 
     public static void main(String[] args) throws IOException {
         Properties props = new Properties();
@@ -37,7 +37,7 @@ public class JSONProducer {
         People people = getTheJSONDataAsPOJO(fileLocation);
         logger.info("The People POJO object --> " + people.toString());
 
-        ProducerRecord<Integer, People> message = new ProducerRecord<Integer, People>(jsonTopicName, 0, people);
+        ProducerRecord<Integer, People> message = new ProducerRecord<Integer, People>(peopleTopicName, 0, people);
 
         Future<RecordMetadata> future = producer.send(message);
         try {

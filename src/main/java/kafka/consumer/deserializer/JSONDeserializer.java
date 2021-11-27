@@ -1,7 +1,7 @@
 package kafka.consumer.deserializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kafka.producer.types.People;
+import kafka.producer.models.People;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Deserializer;
