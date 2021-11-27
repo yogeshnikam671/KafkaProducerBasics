@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -33,27 +34,23 @@ public class JSONProducer {
         KafkaProducer<Integer, People> producer = new KafkaProducer<Integer, People>(props);
 
 
-        String fileLocation = "src/main/resources/json-data/people-1.json";
-        People people = getTheJSONDataAsPOJO(fileLocation);
-        logger.info("The People POJO object --> " + people.toString());
+        String filesLocation = "src/main/resources/json-data";
+        File filesFolder = new File(filesLocation);
 
-        ProducerRecord<Integer, People> message = new ProducerRecord<Integer, People>(peopleTopicName, 0, people);
+        for(File file: Objects.requireNonNull(filesFolder.listFiles())) {
+            People people = getTheJSONDataAsPOJO(file);
+            logger.info("The People POJO object --> " + people.toString());
 
-        Future<RecordMetadata> future = producer.send(message);
-        try {
-            RecordMetadata rm = future.get();
-            logger.info("The message was sent successfully for real!");
-        } catch (ExecutionException | InterruptedException e) {
-            logger.info("There was an error while sending the message :(");
+            ProducerRecord<Integer, People> message = new ProducerRecord<Integer, People>(peopleTopicName, 0, people);
+            producer.send(message);
         }
 
         producer.close();
         logger.info("The message is sent successfully");
     }
 
-    private static People getTheJSONDataAsPOJO(String fileLocation) throws IOException {
+    private static People getTheJSONDataAsPOJO(File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File(fileLocation);
         return objectMapper.readValue(file, People.class);
     }
 }

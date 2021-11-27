@@ -1,0 +1,10 @@
+{
+  "name": "Aditya",
+  "age": 24,
+  "hobbies": [
+    {
+      "hobbyName": "Running",
+      "reason": "Feels good"
+    }
+  ]
+}
